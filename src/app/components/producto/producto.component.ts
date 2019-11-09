@@ -25,13 +25,16 @@ export class ProductoComponent implements OnInit {
   imagenes = [];
   tallas: FormArray;
 
+
+
   constructor(
     private inv: InventarioService,
     private route: ActivatedRoute,
     private fb: FormBuilder
   ) {}
   ngOnInit() {
-    this.forma = this.inv.forma;
+     this.forma = this.inv.forma;
+     console.log(this.forma.value)
     // this.forma = new FormGroup({
     //   id: new FormControl(""),
     //   //'accion': new FormControl('Add'),
@@ -47,10 +50,11 @@ export class ProductoComponent implements OnInit {
     //   comiEbay: new FormControl("0"),
     //   portes: new FormControl(),
     //   margen: new FormControl(this.producto.margen),
-    //   // tallas: this.fb.array([
-    //   //   this.crearTalla()
-    //   // ])
-    // });
+      // tallas: this.fb.array([
+      //   this.crearTalla()
+      // ])
+    //});
+    console.log(this.forma)
 
     const id = this.route.snapshot.paramMap.get("id");
     console.log(id)
@@ -98,7 +102,7 @@ export class ProductoComponent implements OnInit {
       //   comiPay: "0",
       //   comiEbay: "0",
       //   portes: "",
-      //   margen: ""
+        // margen: ""
       //   //   tallas: ([""
       //   // ])
       // });
@@ -107,9 +111,9 @@ export class ProductoComponent implements OnInit {
 
   enviar(forma: NgForm) {
     if (this.forma.invalid) {
+      console.log("formulario no valido", this.forma);
       return;
     }
-    console.log("formulario no valido", this.forma);
 
     Swal.fire({
       title: "Espere por favor",
@@ -162,4 +166,5 @@ export class ProductoComponent implements OnInit {
 //this.forma.controls["precio"].value(new FormControl);
 
   }
+
 }

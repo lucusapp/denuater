@@ -35,7 +35,8 @@ export class InventarioService {
     precio: new FormControl("0"),
     categoria: new FormControl(""),
     caracteristicas: new FormControl(""),
-    //fecha: new FormControl(""),
+    cantidad: new FormControl(""),
+    fecha: new FormControl(""),
     imagenes: new FormArray([new FormControl("")]),
     preCompra: new FormControl(""),
     comiPay: new FormControl("0"),
@@ -46,9 +47,11 @@ export class InventarioService {
     //   this.crearTalla()
     // ])
   });
-
+  
+  
+  
   inicializar() {
-
+    
     return this.forma.reset()
     this.forma.patchValue({
       id: "nuevo",
@@ -58,7 +61,9 @@ export class InventarioService {
       precio: "0",
       categoria: "",
       caracteristicas: "",
-      //fecha: "",
+      cantidad: "",
+
+      fecha: "",
       imagenes: [""],
       preCompra: "",
       comiPay: "",
@@ -73,6 +78,7 @@ export class InventarioService {
     return this.http.post(`${this.url}/inventario.json`, producto).pipe(
       map((resp: any) => {
         producto.id = resp.name;
+        console.log(producto)
         return producto;
       })
     );

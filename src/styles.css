@@ -3,7 +3,7 @@
 
 body {
     background-color: black;
-    color: black!important;
+    color: white!important;
 }
 
 .texto{
@@ -33,7 +33,7 @@ hr {
 
 .card-title,
 .card-text {
-    color: black;
+    color: white;
 }
 
 .badge {

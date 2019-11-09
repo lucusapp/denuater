@@ -1,3 +1,5 @@
+
+
 export class interproductos {
     'id': string;
     'accion': string;
@@ -13,11 +15,15 @@ export class interproductos {
     'comiEbay': number;
     'comiPay': number ;
     'preCompra':number;
-    'margen':number;
+    'margen':number = (this.precio);
     'portes': number;
     'tallas': ['32,31,33'];
+    'cantidad': number;
+  
   payload: any;
+
 }
+
 
 export class tallas{
     '34':number;

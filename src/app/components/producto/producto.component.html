@@ -20,7 +20,7 @@
 
       <button
         class="btn btn-success"
-        [routerLink]="['/ebay/inventario']"
+        [routerLink]="['/ebay/InvMaterialComponent']"
         type="submit"
       >
         <i class="fa fa-arraw-left"></i>
@@ -111,6 +111,19 @@
         </textarea>
       </div>
     </div>
+
+    <div class="form-group row">
+      <label class="col-2 col-form-label">Cantidad</label>
+      <div class="col-md-8">
+        <input
+        class="form-control"
+        type="number"
+        placeholder="cantidad"
+        formControlName="cantidad"
+        step="1"
+        >
+    </div>
+  </div>
   </div>
 
 
@@ -231,16 +244,15 @@
     <tbody>
       <tr *ngFor="let product of productos; let i=index">
         <th scope="row">{{i+1}}</th>
-        <!-- <td>
+        <td>
           <input
           class="form-control"
           type="date"
           placeholder="fecha"
           formControlName="fecha"
-          required
 
           />
-        </td> -->
+        </td>
         <td><input
           class="form-control"
           type="number"
@@ -254,7 +266,6 @@
             placeholder="preCompra"
             formControlName="preCompra"
             step=".01"
-            required
             /></td>
             <td><input
               class="form-control"
@@ -262,7 +273,7 @@
               placeholder="comiPay"
               formControlName="comiPay"
               step=".01"
-              required
+         
               />
             </td>
             <td>
@@ -272,7 +283,6 @@
                 placeholder="comiEbay"
                 formControlName="comiEbay"
                 step=".01"
-                required
                 />
             </td>
             <td>
@@ -282,7 +292,6 @@
                 placeholder="portes"
                 formControlName="portes"
                 step=".01"
-                required
                 />
             </td>
             <td>
@@ -290,8 +299,8 @@
                 class="form-control"
                 type="number"
                 placeholder="margen"
-                formControlName="margen"
-                [attr.disabled]="true"
+                [(ngmodel)]="margen"
+
                 />
               
               </td>

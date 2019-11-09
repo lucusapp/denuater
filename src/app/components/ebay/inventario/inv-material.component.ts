@@ -2,6 +2,7 @@ import { Component, OnInit,ViewChild } from '@angular/core';
 import { InventarioService } from 'src/app/service/inventario.service';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog,MatDialogConfig,MatButtonModule,MatIconModule, throwMatDialogContentAlreadyAttachedError} from '@angular/material';
 import { ProductoComponent } from '../../producto/producto.component';
+import { interproductos } from 'src/app/models/termino';
 
 
 
@@ -17,8 +18,9 @@ export class InvMaterialComponent implements OnInit {
 
   listData: MatTableDataSource<any>;
   
+  productos:interproductos[]=[]
   
-  displayedColumns:string[]=['titulo','caracteristicas','precio','marca','categoria','imagenes','actions'];
+  displayedColumns:string[]=['titulo','caracteristicas','precio','marca','cantidad','categoria','imagenes','actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator:MatPaginator;
   searchKey:string
@@ -30,11 +32,33 @@ export class InvMaterialComponent implements OnInit {
   ngOnInit() {
     this.invSer.getProductos().subscribe(
       list=>{
-       let array=list.map(producto=>{
+        this.productos=list
+        console.log(this.productos)
+       let array=list.map(productoMT=>{
           return {
-            titulo: producto.titulo,
-            caracteristicas: producto.caracteristicas,
-            precio:producto.precio
+            "Action(SiteID=Spain|Country=ES|Currency=EUR|Version=745)":'add',
+            CustomLabel:'',
+            Category: productoMT.categoria,
+            StoreCategory:'',
+            Title: productoMT.titulo,
+            ConditionID:'1000',
+            'C:Marca': productoMT.marca,
+            "C:MPN":'No aplicable',
+            "Product:EAN":'No aplicable',
+            PicURL: productoMT.imagenes.join(),
+            precio:productoMT.precio,
+            Description: productoMT.caracteristicas,
+            Format: 'FixedPrice',
+            StartPrice: productoMT.precio,
+            Quantity: productoMT.cantidad,
+            Localitation: '33865',
+            ShippingProfileName : 'Fija:Correos: carta(Gratis),3 días laborables',
+            ReturnProfileName: 'Devoluciones aceptadas,Comprador,14 días#0',
+            PaymentProfileName:'PayPal:Pago inmediato',
+            Relationship:'',
+            RelationshipDetails:'',
+            id: productoMT.id
+
           }
         })
         console.log(array)
@@ -62,6 +86,7 @@ export class InvMaterialComponent implements OnInit {
     this.dialog.open(ProductoComponent, DialogConfig)
 
   }
+
   
 
   exportAsXLSX(){
