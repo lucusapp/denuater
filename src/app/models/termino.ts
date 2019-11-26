@@ -15,25 +15,27 @@ export class interproductos {
     'comiEbay': number;
     'comiPay': number ;
     'preCompra':number;
-    'margen':number = (this.precio);
+    'margen':number;
     'portes': number;
-    'tallas': ['32,31,33'];
+    'tallas': string;
     'cantidad': number;
   
   payload: any;
 
+  constructor(){
+      this.fecha = new Date();
+
+}
+
 }
 
 
-export class tallas{
-    '34':number;
-    '35':number;
-    '36':number;
-    '37':number;
-    '38':number;
-    '39':number;
-    '40':number;
-    '41':number;
-    '42':number;
-    
+export class pedidos{
+   'nombre': string;
+   'direccion': string;
+   'telefono': string;
+   'cp':string;
+   'provincia': string;
+   'numero':string;
+   'mensajera': string  
 }

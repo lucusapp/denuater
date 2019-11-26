@@ -84,9 +84,14 @@ export class InvMaterialComponent implements OnInit {
     DialogConfig.disableClose = false,
     DialogConfig.autoFocus = false,
     this.dialog.open(ProductoComponent, DialogConfig)
-
   }
 
+  onDelete(producto,i:number){
+
+    this.productos.slice(i,1);
+    this.invSer.borrarProducto(producto)
+              .subscribe()
+  }
   
 
   exportAsXLSX(){

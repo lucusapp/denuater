@@ -8,7 +8,7 @@ import {
   FormBuilder,
   NgForm
 } from "@angular/forms";
-import { interproductos,tallas } from "src/app/models/termino";
+import { interproductos} from "src/app/models/termino";
 import { InventarioService } from "src/app/service/inventario.service";
 import Swal from "sweetalert2";
 import { Observable } from "rxjs";
@@ -23,20 +23,13 @@ export class ProductoComponent implements OnInit {
   producto = new interproductos();
   productos = [];
   imagenes = [];
-  tallas: FormArray;
+  tallas:FormArray
 
-
-
-  constructor(
-    private inv: InventarioService,
-    private route: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
+  constructor(private inv: InventarioService, private route: ActivatedRoute, private fb:FormBuilder) {
+  }
   ngOnInit() {
-     this.forma = this.inv.forma;
-     console.log(this.forma.value)
     // this.forma = new FormGroup({
-    //   id: new FormControl(""),
+    //   id: new FormControl(this.producto.id),
     //   //'accion': new FormControl('Add'),
     //   titulo: new FormControl(""),
     //   marca: new FormControl(""),
@@ -50,21 +43,25 @@ export class ProductoComponent implements OnInit {
     //   comiEbay: new FormControl("0"),
     //   portes: new FormControl(),
     //   margen: new FormControl(this.producto.margen),
-      // tallas: this.fb.array([
-      //   this.crearTalla()
-      // ])
-    //});
-    console.log(this.forma)
+    //   tallas: this.fb.array([
+    //     this.crearTalla()
+    //   ])
+    // });
+
+    //Traemos del servicio la forma del formulario creada por la aproximación por data y la igualamos a nuestro formulario que definimos de tipo formGroup
+    this.forma = this.inv.forma;
+    console.log(this.forma.value)
+
+
 
     const id = this.route.snapshot.paramMap.get("id");
-    console.log(id)
-
+    
     if (id !== "nuevo") {
       this.inv.getProducto(id).subscribe((resp: interproductos) => {
         this.producto = resp;
         this.productos.push(resp);
-        // this.tallas=resp.tallas
-
+       // this.tallas=resp.tallas
+        
         console.log(this.producto);
         this.imagenes = resp.imagenes;
         console.log(this.imagenes);
@@ -83,37 +80,14 @@ export class ProductoComponent implements OnInit {
         );
         console.log(pictures.value);
       });
-    } else {
-      this.forma.reset()
-      
-      
-      
-      // setValue({
-      //   id: "nuevo",
-      //   //'accion': new FormControl('Add'),
-      //   titulo: "",
-      //   marca: "",
-      //   precio: "",
-      //   categoria: "",
-      //   caracteristicas: "",
-      //   // fecha: "",
-      //   imagenes: [""],
-      //   preCompra: "",
-      //   comiPay: "0",
-      //   comiEbay: "0",
-      //   portes: "",
-        // margen: ""
-      //   //   tallas: ([""
-      //   // ])
-      // });
     }
   }
 
   enviar(forma: NgForm) {
     if (this.forma.invalid) {
-      console.log("formulario no valido", this.forma);
       return;
     }
+    console.log("formulario no valido", this.forma);
 
     Swal.fire({
       title: "Espere por favor",
@@ -146,25 +120,29 @@ export class ProductoComponent implements OnInit {
     (<FormArray>this.forma.controls["imagenes"]).removeAt(i);
   }
 
-  crearTalla(): FormGroup {
-    return this.fb.group({
-      talla: [""],
-      cantidad: [""]
-    });
+ crearTalla():FormGroup{
+   return this.fb.group({
+    talla:[""],
+    cantidad:[""]
+
+   })
+
+ }
+
+  agregartalla():void {
+
+    this.tallas=this.forma.get('tallas') as FormArray
+    this.tallas.push(this.crearTalla())
+  
+      
+    
+
+    
+    
+   // (<FormArray>this.forma.controls["tallas"]).push(new FormControl(""))
+
   }
 
-  agregartalla(): void {
-    this.tallas = this.forma.get("tallas") as FormArray;
-    this.tallas.push(this.crearTalla());
-  }
-
-  inicializar(){
-    this.forma.reset()
-
-  // (<FormArray>this.forma.controls["tallas"]).push(new FormControl(""))
-
-//this.forma.controls["precio"].value(new FormControl);
-
-  }
-
+    //this.forma.controls["precio"].value(new FormControl); 
+  
 }

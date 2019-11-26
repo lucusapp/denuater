@@ -8,7 +8,8 @@ import {
   Validators,
   FormArray,
   FormBuilder,
-  NgForm
+  NgForm,
+  Form
 } from "@angular/forms";
 
 import * as Filesaver from "file-saver";
@@ -32,11 +33,12 @@ export class InventarioService {
     //'accion': new FormControl('Add'),
     titulo: new FormControl(""),
     marca: new FormControl(""),
-    precio: new FormControl("0"),
+    //precio: new FormControl(""),
+    precio: new FormArray([new FormControl("")]),
     categoria: new FormControl(""),
     caracteristicas: new FormControl(""),
     cantidad: new FormControl(""),
-    fecha: new FormControl(""),
+    fecha: new FormControl(new Date()),
     imagenes: new FormArray([new FormControl("")]),
     preCompra: new FormControl(""),
     comiPay: new FormControl("0"),
@@ -120,6 +122,25 @@ export class InventarioService {
     });
     return productos;
   }
+
+
+// PEDIDOS SERVICE
+
+
+pedform = new FormGroup({
+  'nombre': new FormControl(""),
+   'direccion': new FormControl(""),
+   'telefono': new FormControl(""),
+   'cp':new FormControl(""),
+   'provincia': new FormControl(""),
+   'numero':new FormControl(""),
+   'mensajera': new FormControl("")
+
+})
+
+
+
+
   // FILE SAVER EXCEL
 
   exportToExcel(json: any[], excelFileName: string) {
