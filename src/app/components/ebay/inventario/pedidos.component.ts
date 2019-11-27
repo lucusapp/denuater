@@ -1,58 +1,40 @@
-
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { Component, OnInit } from '@angular/core';
 import { InventarioService } from 'src/app/service/inventario.service';
-import { interproductos } from 'src/app/models/termino';
-import { FormGroup } from '@angular/forms';
-
-
-
-// export interface PeriodicElement {
-
-//   accion: string;
-//   titulo: string;
-//   precio: number;
-//   marca: string;
-//   categoria: string;
-//   caracteristicas:string;
-//   imagenes:string
-// }
-
-
-
-
+import { interproductos, interpedidos } from 'src/app/models/termino';
+import { Angular5Csv } from 'angular5-csv/dist/Angular5-csv';
 
 @Component({
   selector: 'app-pedidos',
   templateUrl: './pedidos.component.html',
   styles: []
 })
+
+
+
+
+
 export class PedidosComponent implements OnInit {
   
+  pedidos: interpedidos[]=[]
   
-
-
-  // displayedColumns: string[]=['accion','titulo','precio','marca','categoria','caracteristicas','imagenes','accions'];
-  // dataSource:any = []
-
-//@ViewChild(MatPaginator) 
-
-
-pedidoForm :FormGroup
-
-  constructor(private invServ:InventarioService) { 
-    
+  constructor(private inv:InventarioService) { 
   }
   ngOnInit() {
 
-    this.pedidoForm=this.invServ.pedform
-    console.log(this.pedidoForm.value)
-   
-   
+    
   }
-
-  
-    }
-
-  
-
+  // excel(){
+  //   var options = { 
+  //     fieldSeparator: ';',
+  //     quoteStrings: '"',
+  //     decimalseparator: '.',
+  //     showLabels: true, //si se proporciona creará una fila en el encabezado. 
+  //     showTitle: true, //mostrar titulo. Si se proporciona mostrara las cabeceras.
+  //     useBom: false,
+  //     noDownload: false,
+  //     headers: ["Action(SiteID=Spain|Country=ES|Currency=EUR|Version=745)", "ItemID", "CustomLabel","*Category"],
+  //   };
+  //   new Angular5Csv(this.productos,"fileName",options);   
+  // }
+}
+//`Action(SiteID=Spain|Country=ES|Currency=EUR|Version=745);ItemID;CustomLabel;*Category;StoreCategory;*Title;*ConditionID;*C:Marca;C:MPN;Product:EAN;PicURL;*Description;*Format;*Duration;*StartPrice;*Quantity;*Location;ShippingProfileName;ReturnProfileName;PaymentProfileName;Relationship;RelationshipDetails

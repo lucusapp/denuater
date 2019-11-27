@@ -30,7 +30,8 @@ export class interproductos {
 }
 
 
-export class pedidos{
+export class interpedidos{
+   'id':string;
    'nombre': string;
    'direccion': string;
    'telefono': string;

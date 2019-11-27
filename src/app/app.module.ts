@@ -25,7 +25,6 @@ import { ProductoComponent } from './components/producto/producto.component';
 import { MaterialModule } from './material/material.module'
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { InvMaterialComponent } from './components/ebay/inventario/inv-material.component';
 import { MatInputModule } from '@angular/material';
 
 
@@ -37,7 +36,6 @@ import { MatInputModule } from '@angular/material';
     NavbarComponent,
     InventarioComponent,
     PedidosComponent,
-    InvMaterialComponent,
     ProductoComponent
     
     
