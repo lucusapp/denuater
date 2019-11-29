@@ -1,17 +1,17 @@
 import { Component, OnInit,ViewChild } from '@angular/core';
 import { InventarioService } from 'src/app/service/inventario.service';
 import { MatTableDataSource, MatSort, MatPaginator, MatDialog,MatDialogConfig,MatButtonModule,MatIconModule, throwMatDialogContentAlreadyAttachedError} from '@angular/material';
-import { ProductoComponent } from '../../producto/producto.component';
+import { ProductoComponent } from './producto.component';
 import { interproductos } from 'src/app/models/termino';
 
 
 
 @Component({
-  selector: 'app-inventario',
-  templateUrl: './inventario.component.html',
+  selector: 'app-productos',
+  templateUrl: './productos.component.html',
  
 })
-export class InventarioComponent implements OnInit {
+export class ProductosComponent implements OnInit {
 
   constructor(private invSer:InventarioService,
               private dialog: MatDialog,) { }

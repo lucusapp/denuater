@@ -17,9 +17,9 @@ import {EbayService} from './service/ebay.service';
 import {ScrapeService} from './service/scrape.service';
 import {TokenInterceptorService} from './service/token-interceptor.service';
 
-import { InventarioComponent } from './components/ebay/inventario/inventario.component';
-import { PedidosComponent } from './components/ebay/inventario/pedidos.component';
-import { ProductoComponent } from './components/producto/producto.component';
+import { ProductosComponent } from './components/ebay/inventario/productos/productos.component';
+import { PedidosComponent } from './components/ebay/inventario/pedidos/pedidos.component';
+import { ProductoComponent } from './components/ebay/inventario/productos/producto.component';
 
 
 import { MaterialModule } from './material/material.module'
@@ -34,7 +34,7 @@ import { MatInputModule } from '@angular/material';
     HomeComponent,
     EbayComponent,
     NavbarComponent,
-    InventarioComponent,
+    ProductosComponent,
     PedidosComponent,
     ProductoComponent
     

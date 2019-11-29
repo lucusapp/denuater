@@ -2,9 +2,9 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {HomeComponent} from './components/home/home.component';
 import {EbayComponent} from './components/ebay/ebay.component';
-import { PedidosComponent } from './components/ebay/inventario/pedidos.component';
-import { InventarioComponent } from './components/ebay/inventario/inventario.component';
-import { ProductoComponent } from './components/producto/producto.component';
+import { PedidosComponent } from './components/ebay/inventario/pedidos/pedidos.component';
+import { ProductosComponent } from './components/ebay/inventario/productos/productos.component';
+import { ProductoComponent } from './components/ebay/inventario/productos/producto.component';
 
 
 
@@ -13,8 +13,8 @@ const routes: Routes = [
   {path : 'ebay', component: EbayComponent,
     children:[
       {path :'pedidos', component: PedidosComponent},
-      {path: 'inventario',component : InventarioComponent},
-      {path : '**', component: InventarioComponent}
+      {path: 'inventario',component : ProductosComponent},
+      {path : '**', component: ProductosComponent}
     ]
   },
   {path : 'producto/:id', component: ProductoComponent},

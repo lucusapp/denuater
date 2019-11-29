@@ -161,13 +161,14 @@ private saveAsExcel(buffer: any, filename: string) {
 
 pedform:FormGroup= new FormGroup({
    'id': new FormControl("null"),
-   'nombre': new FormControl(""),
-   'direccion': new FormControl(""),
-   'telefono': new FormControl(""),
-   'cp':new FormControl(""),
-   'provincia': new FormControl(""),
-   'numero':new FormControl(""),
-   'mensajera': new FormControl("")
+   'Fecha':new FormControl(new Date()),
+   'Nombre': new FormControl(""),
+   'Direccion': new FormControl(""),
+   'Telefono': new FormControl(""),
+   'Cp':new FormControl(""),
+   'Provincia': new FormControl(""),
+   'Numero':new FormControl(""),
+   'Mensajera': new FormControl("")
 })
 
 getPedidos(){

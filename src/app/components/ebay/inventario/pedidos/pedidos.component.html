@@ -1,0 +1,48 @@
+<div class="search-form-field" mt-1>
+
+    <form [formGroup]="inv.pedform">
+        <mat-grid-list  cols="2" rowHeight="500px" row>
+            <mat-grid-tile>
+                <div class="controles-container" >
+                    <input type="hidden" formControlName="id">
+                    <mat-form-field>
+                        <input  matInput [matDatepicker]="picker" placeholder="Fecha">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input formControlName="Nombre" matInput placeholder="Nombre">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input formControlName="Direccion" matInput placeholder="Direccion">
+                    </mat-form-field>  
+                    <mat-form-field>
+                        <input formControlName="Telefono" matInput placeholder="Telefono">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input formControlName="Cp" matInput placeholder="Cp">
+                    </mat-form-field>
+                    <mat-form-field>
+                        <input formControlName="Provincia" matInput placeholder="Provincia">
+                    </mat-form-field>
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile>
+                <div class="controles-container">
+                    <mat-form-field>
+                        <input formControlName="Numero" matInput placeholder="Numero">
+                    </mat-form-field>        
+                    <mat-form-field>
+                        <input formControlName="Mensajera" matInput placeholder="Mensajera">
+                    </mat-form-field>   
+                    <div class="button">
+                        <button mat-raised-button color="primary" type="submit">Enviar</button>
+                    </div>                
+                </div>
+            </mat-grid-tile>
+
+
+    </mat-grid-list>
+    
+</form>
+</div>
